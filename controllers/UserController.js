@@ -25,7 +25,7 @@ UserController.getAll = async (req, res) => {
 UserController.getById = async (req, res) => {
    try {
       const id = req.params.id
-      const users = await User.findOne({ObjectId:id});
+      const users = await User.findOne({_id:id});
 
       console.log(users)
       return res.status(200).json({
@@ -42,13 +42,14 @@ UserController.getById = async (req, res) => {
    }
 };
 
-UserController.rentUserMovies = async (req, res) => {
+UserController.BuyUserCursos = async (req, res) => {
    console.log(req.params);
    try {
+      //busca usuario
      const user = await User.findById(req.params.userId);
      console.log(user)
      //const movie = req.params.movieId;
-     const movie = req.body;
+     const curso = req.body;
      //console.log("validacion de alquiler")
      //console.log(movie)
      //const match = user.movies.find((m) => m == movie);
@@ -59,15 +60,16 @@ UserController.rentUserMovies = async (req, res) => {
          inserted: false,
        });
      } else {
+      //actualiza usuario en campo cursos comprados
        const updatedUser = await User.updateOne(
          { _id: req.params.userId },
-         { $push: { movies: req.params.movieId } }
+         { $push: { cursos_comprados: req.params.cursoId } }
        );
        res.json({
-         message: "User movies updated successfully",
+         message: "Curso Rented successfully",
          data: updatedUser,
          inserted: true,
-         movies: user.movies,
+         cursos_comprados: user.cursos_comprados,
        });
      }
    } catch (error) {
@@ -78,7 +80,7 @@ UserController.rentUserMovies = async (req, res) => {
     try {
        const deletedOne = await User.deleteOne({_id: req.params.id});
        res.json({
-          message: `${req.params.id} DELETED`,
+          message: `User ${req.params.id} has been DELETED`,
           data: deletedOne,
        });
     } catch (error){

@@ -9,10 +9,12 @@ import  verifyToken from "../middlewares/verifyToken.js";
 //router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
 //router.get("/:id", verifyToken, isSuperAdmin, UserController.getById);
 
+//CRUD USERS
 router.get("/:id",UserController.getById);
 router.get("/",UserController.getAll);
+//router.update("/update/:id",UserController.updateById)
 
-//router.patch("/:userId/rent/:movieId",UserController.rentUserMovies);
-//router.delete("/delete/:id",UserController.deleteById);
+router.delete("/delete/:id",UserController.deleteById);
 
+router.patch("/:userId/rent/:cursoId",UserController.BuyUserCursos);
 export default router;
