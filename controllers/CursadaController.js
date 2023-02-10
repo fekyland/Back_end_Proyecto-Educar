@@ -8,8 +8,8 @@ CursadaController.register = async (req, res) => {
     const { name, email, title, description, video } = req.body
     // crear curso
     const newCursada = {
-      name: name,
-      email: email,
+      email: email,              //email creador del curso
+      name: name,                //nombre profesor
       title: title,
       description: description,
       video: video,
@@ -96,5 +96,43 @@ CursadaController.getByEmail= async (req, res) => {
     } catch (error){
        res.status(500).send ("internal error");
     };
+ }
+ CursadaController.updateById = async (req, res) => {
+   console.log(req.body)
+   try {    
+      const id = req.params.id
+      await Cursada.findOneAndUpdate({_id:id},req.body);
+        
+     return res.status(200).json({
+       success: true,
+       message: 'update curso successfully',
+     })
+ 
+   } catch (error) {
+     return res.status(500).json({
+       success: false,
+       message: 'Error actualizando curso',
+       error: error?.message || error,
+     })
+   }
+ }
+ CursadaController.searchByTitle = async(req, res) =>{
+   try {
+      const titlesearch = req.params.title
+      console.log(titlesearch)
+      const busqueda = await Cursada.find( {title: {$regex: titlesearch,$options:"i"}})
+      console.log(busqueda)
+      return res.status(200).json({
+         success: true,
+         message: "id retrieved successfully",
+         data: busqueda
+      })
+   } catch (error) {
+      return res.status(404).json({
+         success: false,
+         message: 'Error cursada not found',
+         error: error?.message || error,
+       })
+   }
  }
 export default CursadaController;

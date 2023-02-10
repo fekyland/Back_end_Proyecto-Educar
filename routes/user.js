@@ -17,4 +17,5 @@ router.get("/",UserController.getAll);
 router.delete("/delete/:id",UserController.deleteById);
 
 router.patch("/:userId/rent/:cursoId",UserController.BuyUserCursos);
+router.post("/update/:id",UserController.updateById);
 export default router;

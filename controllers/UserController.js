@@ -63,7 +63,7 @@ UserController.BuyUserCursos = async (req, res) => {
       //actualiza usuario en campo cursos comprados
        const updatedUser = await User.updateOne(
          { _id: req.params.userId },
-         { $push: { cursos_comprados: req.params.cursoId } }
+         { $push: { cursos_comprados: curso} }
        );
        res.json({
          message: "Curso Rented successfully",
@@ -87,6 +87,24 @@ UserController.BuyUserCursos = async (req, res) => {
        res.status(500).send ("internal error");
     };
  }
-
+UserController.updateById = async (req, res) => {
+   console.log(req.body)
+   try {    
+      const id = req.params.id
+      await User.findOneAndUpdate({_id:id},req.body);
+        
+     return res.status(200).json({
+       success: true,
+       message: 'Update User successfully',
+     })
+ 
+   } catch (error) {
+     return res.status(500).json({
+       success: false,
+       message: 'Error updating User',
+       error: error?.message || error,
+     })
+   }
+ }
  
 export default UserController;

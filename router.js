@@ -10,14 +10,9 @@ import cursadasRouter from "./routes/cursada.js"
 // rusers
 router.use("/", indexRouter);
 router.use("/users", usersRouter);
-
-
 //route cursos
 router.use("/cursadas",cursadasRouter);
-
 // auth
 router.use("/auth", authRouter);
-
-
 
 export default router;

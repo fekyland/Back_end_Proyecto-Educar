@@ -64,7 +64,9 @@ AuthController.login = async (req, res) => {
          token: token,
          role: user.role,
          id: user._id,
-         movies: user.movies,
+         cursos_comprados: user.cursos_comprados,
+         email:user.email,
+         name:user.name
       });
    } catch (error) {
       return res.status(500).json({
