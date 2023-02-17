@@ -10,12 +10,17 @@ import  verifyToken from "../middlewares/verifyToken.js";
 //router.get("/:id", verifyToken, isSuperAdmin, UserController.getById);
 
 //CRUD USERS
+// buscar ususario por id
 router.get("/:id",UserController.getById);
+//obtener todos los usuarios
 router.get("/",UserController.getAll);
 //router.update("/update/:id",UserController.updateById)
-
+//borrar usuarios
 router.delete("/delete/:id",UserController.deleteById);
 
-router.patch("/:userId/rent/:cursoId",UserController.BuyUserCursos);
-router.post("/update/:id",UserController.updateById);
+//router.patch("/:userId/rent/:cursoId",UserController.BuyUserCursos);
+//router.post("/update/:id",UserController.updateById);
+//buscar todas las cursadas
+router.get("/email/:email",UserController.getByEmail)
+
 export default router;

@@ -106,5 +106,23 @@ UserController.updateById = async (req, res) => {
      })
    }
  }
- 
+ UserController.getByEmail= async (req, res) => {
+   try {
+      const {email} = req.params
+      const cursos = await User.find({email:email});
+
+     // console.log(curso)
+      return res.status(200).json({
+         success: true,
+         message: "usuario por email retrieved successfully",
+         data: cursos,
+      });
+   } catch (error) {
+      return res.status(500).json({
+         success: false,
+         message: "Error retrieving cursos",
+         error: error.message,
+      });
+   }
+};
 export default UserController;

@@ -23,6 +23,15 @@ const CursadaSchema = new Schema (
       required: true,
     
     },
+    price: {
+      type: Number,
+      required: true,
+    
+    },
+    orders_id:{
+      type: Array,
+      default:[String],
+    },
   },
   {
     timestamps: true,
