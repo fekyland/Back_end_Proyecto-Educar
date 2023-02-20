@@ -22,6 +22,8 @@ router.patch("/:id/order/:userId",CursadaController.buyById);
 router.get("/compradas/:userId",CursadaController.findBuyersById)
 // comprobar cursada
 router.get("/:id/comprobar/:userId",CursadaController.checkCursada)
+// acutalizar 
+router.put ("/updatecurso",CursadaController.updateCursada)
 
 export default router;
 

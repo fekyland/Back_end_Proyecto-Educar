@@ -1,6 +1,8 @@
 import Cursada from '../models/Cursada.js'
 
+
 const CursadaController = {}
+//registra una cursada
 CursadaController.register = async (req, res) => {
   console.log(req.body)
   try {
@@ -27,6 +29,35 @@ CursadaController.register = async (req, res) => {
     })
   }
 }
+CursadaController.updateCursada = async (req, res) => {
+  console.log(req.body)
+  try {
+    const { id,name, email, title, description, video, price } = req.body
+    // crear curso
+    const newCursada = {
+      email: email, //email creador del curso
+      name: name, //nombre profesor
+      title: title,
+      description: description,
+      video: video,
+      price: price,
+      
+    }
+    await Cursada.findOneAndUpdate({_id:id},{title:newCursada.title,description:newCursada.description,video:newCursada.video,price:newCursada.price})
+    return res.status(200).json({
+      success: true,
+      message: 'curso updated successfully',
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'Error updating curso',
+      error: error?.message || error,
+    })
+  }
+}
+
+// para mapear los cursos propios del user ,despues los comparo con el user ID
 CursadaController.getByEmail = async (req, res) => {
   console.log(req.params)
   try {
@@ -48,7 +79,7 @@ CursadaController.getByEmail = async (req, res) => {
     })
   }
 }
-
+//find all para mapear todos los cursos en la pagina principal
 CursadaController.getAll = async (req, res) => {
   console.log(req.params)
   try {
@@ -57,7 +88,7 @@ CursadaController.getAll = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: 'Get all cursos retrieved successfully',
-      data: cursos,
+      results: cursos,
     })
   } catch (error) {
     return res.status(500).json({
@@ -98,6 +129,7 @@ CursadaController.deleteById = async (req, res) => {
     res.status(500).send('internal error')
   }
 }
+
 CursadaController.updateById = async (req, res) => {
   console.log(req.body)
   try {
@@ -116,6 +148,7 @@ CursadaController.updateById = async (req, res) => {
     })
   }
 }
+//buscador de cursos 
 CursadaController.searchByTitle = async (req, res) => {
   try {
     const titlesearch = req.params.title
@@ -137,6 +170,7 @@ CursadaController.searchByTitle = async (req, res) => {
     })
   }
 }
+//compra peliculas y se almacena en el campo orders id
 CursadaController.buyById = async (req, res) => {
   
   try {
@@ -166,24 +200,26 @@ CursadaController.buyById = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
-
+//para mapear las peliculas compradas 
 CursadaController.findBuyersById = async (req, res) => {
   const Id = req.params.userId
   console.log(Id)
   try {
     const resultado = await Cursada.find({ orders_id: { $in: [Id] } })
     console.log(resultado)
+    
     return res.status(200).json({
       success: true,
       message: 'cursos comprados retrieved succesfuly',
-      results: resultado
+      results: resultado,
+      
     })
   } catch (error) {
    
       res.status(500).json({ message: error.message })
   }
 }
-
+//redirigir si esta comprada por el usuario o no
 CursadaController.checkCursada = async (req, res) => {
    const Id = req.params.id
    const userId = req.params.userId
@@ -209,5 +245,6 @@ CursadaController.checkCursada = async (req, res) => {
        res.status(500).json({ message: error.message })
    }
  }
+
 
 export default CursadaController

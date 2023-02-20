@@ -7,16 +7,16 @@ import  verifyToken from "../middlewares/verifyToken.js";
 
 /* GET users listing. */
 //router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
-//router.get("/:id", verifyToken, isSuperAdmin, UserController.getById);
-
+router.get("/:id", verifyToken, isSuperAdmin, UserController.getById);
+router.delete("/delete/:id",UserController.deleteById);
 //CRUD USERS
 // buscar ususario por id
-router.get("/:id",UserController.getById);
+//router.get("/:id",UserController.getById);
 //obtener todos los usuarios
 router.get("/",UserController.getAll);
 //router.update("/update/:id",UserController.updateById)
 //borrar usuarios
-router.delete("/delete/:id",UserController.deleteById);
+
 
 //router.patch("/:userId/rent/:cursoId",UserController.BuyUserCursos);
 //router.post("/update/:id",UserController.updateById);

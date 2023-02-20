@@ -24,14 +24,7 @@ const UserSchema = new Schema(
          enum: ["user", "admin", "super_admin"],
          default: "user",
       },
-      cursos_comprados: {
-         type: Array,
-         default:[],
-      },
-      cursos_propios: {
-         type: Array,
-         default:[],
-      }
+   
    },
    {
       timestamps: true,
