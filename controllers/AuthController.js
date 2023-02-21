@@ -75,6 +75,32 @@ AuthController.login = async (req, res) => {
       });
    }
 };
+AuthController.updateUser = async (req, res) => {
+   console.log(req.body)
+   try {
+     const { id,name, email, password } = req.body
+     // update user
+     const encryptedPassword = hashSync(password, 10);
+     
+     const newUser = {
+       email: email, //email creador del curso
+       name: name, //nombre profesor
+       password: encryptedPassword
+       
+     }
+     await User.findOneAndUpdate({_id:id},{email:newUser.email,name:newUser.name,password:newUser.password})
+     return res.status(200).json({
+       success: true,
+       message: 'User updated successfully',
+     })
+   } catch (error) {
+     return res.status(500).json({
+       success: false,
+       message: 'Error updating curso',
+       error: error?.message || error,
+     })
+   }
+ }
 export default  AuthController;
 
 
