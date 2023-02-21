@@ -1,114 +1,48 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
-
-<h3 align="center">proyecto_educar-final</h3>
-
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
-
----
-
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
-
-## 📝 Table of Contents
-
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
-
-## 🧐 About <a name = "about"></a>
-
-Write about 1-2 paragraphs describing the purpose of your project.
-
-## 🏁 Getting Started <a name = "getting_started"></a>
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
-
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Backend for Online Courses</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Backend for Online Courses</h1>
+    <p>This is the backend for an online courses platform that uses Node.js, JavaScript, Express, and MongoDB.</p>
+    <h2>Installation</h2>
+    <ol>
+      <li>Clone this repository: <code>git clone https://github.com/your-username/your-repository.git</code></li>
+      <li>Install dependencies: <code>npm install</code></li>
+      <li>Create a <code>.env</code> file at the root of the project and configure the following environment variables:</li>
+      <pre><code>PORT=3000
+MONGODB_URI=mongodb://localhost:27017/online-courses</code></pre>
+      <li>Start the application: <code>npm start</code></li>
+    </ol>
+    <h2>Technologies</h2>
+    <ul>
+      <li><a href="https://nodejs.org/">Node.js</a>: a JavaScript runtime environment for server-side programming.</li>
+      <li><a href="https://expressjs.com/">Express</a>: a Node.js framework for building web applications and APIs.</li>
+      <li><a href="https://www.mongodb.com/">MongoDB</a>: a document-oriented NoSQL database.</li>
+      <li><a href="https://mongoosejs.com/">Mongoose</a>: a Node.js library that provides a simple and schema-based solution for modeling application data.</li>
+    </ul>
+    <h2>Features</h2>
+    <ul>
+      <li>Create, read, update, and delete courses.</li>
+      <li>Create, read, update, and delete course categories.</li>
+      <li>Create, read, update, and delete users.</li>
+      <li>User authentication using JSON Web Tokens (JWT).</li>
+      <li>Route protection using authentication middleware.</li>
+      <li>Manage user enrollments to courses.</li>
+    </ul>
+    <h2>Contributing</h2>
+    <p>If you would like to contribute to this project, please follow these steps:</p>
+    <ol>
+      <li>Fork this repository.</li>
+      <li>Create a branch for your new feature: <code>git checkout -b new-feature</code></li>
+      <li>Make your changes and commit them: <code>git commit -m "Add new feature"</code></li>
+      <li>Push your changes to your fork: <code>git push origin new-feature</code></li>
+      <li>Create a Pull Request to this repository.</li>
+    </ol>
+    <h2>Author</h2>
+    <p>This project was developed by Your Name.</p>
+  </body>
+</html>
