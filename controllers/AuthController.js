@@ -1,4 +1,5 @@
 import  User  from "../models/User.js";
+import  Role from "../models/Role.js";
 import { hashSync,compareSync } from "bcrypt";
 import  jwt   from "jsonwebtoken";
 
@@ -6,7 +7,7 @@ const AuthController = {};
 AuthController.register = async (req, res) => {
    console.log(req.body);
    try {
-      const { name, email, password } = req.body;
+      const { name, email, password  } = req.body;
       // PASSWORD CODE VALIDATION
       if (password.length < 6) {
          return res.status(500).json({
@@ -15,11 +16,18 @@ AuthController.register = async (req, res) => {
          });
       }
       const encryptedPassword = hashSync(password, 10);
+     // const newRole = {
+     //    name: role,
+     // };
+      
       const newUser = {
          name: name,
          email: email,
          password: encryptedPassword,
+         role_id:"63f74c4112987034f3daeb0c"
+        
       };
+     
       await User.create(newUser);
       return res.status(200).json({
          success: true,
@@ -38,33 +46,44 @@ AuthController.login = async (req, res) => {
    try {
       const { email, password } = req.body;  //le manda el body   
       //Validación de lo que me llega por body
+     console.log(req.body)
       if (!email || !password) {
          return res.status(400).json({
             success: false,
             message: "Email and password are required",
          });
       }
-      const user = await User.findOne({ email: email });
+    
+      const user = await User.findOne({ email: email }).populate('role_id')
+      console.log(user)
+     // to do manejar si no existe usuario
+      
+
+
+
       const isValidPassword = compareSync(password, user.password);
       if (!isValidPassword) {
          return res.status(401).json({
             success: false,
             message: "Bad Credentials",
          });
+        
       }
+      
+     
       const token = jwt.sign(
-         { user_id: user._id, user_role: user.role },
+         { user_id: user._id, user_role: user.role_id.name },
          process.env.JWT_SECRET,
          { expiresIn: "20m" }
+         
       );
-      
+     
       return res.status(200).json({
          success: true,
-         message: `User Logged as ${user.role.toUpperCase()}`,
+         message: `Logged as ${user.role_id.name}`,
          token: token,
-         role: user.role,
+         role: user.role_id.name,
          id: user._id,
-         cursos_comprados: user.cursos_comprados,
          email:user.email,
          name:user.name
       });
@@ -72,11 +91,12 @@ AuthController.login = async (req, res) => {
       return res.status(500).json({
          success: false,
          message: "User Login failed",
+         error: error.message
       });
    }
 };
 AuthController.updateUser = async (req, res) => {
-   console.log(req.body)
+   
    try {
      const { id,name, email, password } = req.body
      // update user

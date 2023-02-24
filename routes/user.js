@@ -6,21 +6,13 @@ import  isSuperAdmin from "../middlewares/isSuperAdmin.js";
 import  verifyToken from "../middlewares/verifyToken.js";
 
 /* GET users listing. */
-//router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
+router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
+// get user by id
 router.get("/:id", verifyToken, isSuperAdmin, UserController.getById);
+// delete user by id
 router.delete("/delete/:id",UserController.deleteById);
-//CRUD USERS
-// buscar ususario por id
-//router.get("/:id",UserController.getById);
-//obtener todos los usuarios
-router.get("/",UserController.getAll);
-//router.update("/update/:id",UserController.updateById)
-//borrar usuarios
-
-
-//router.patch("/:userId/rent/:cursoId",UserController.BuyUserCursos);
-//router.post("/update/:id",UserController.updateById);
 //buscar todas las cursadas
-router.get("/email/:email",UserController.getByEmail)
+router.get("/email/:email",verifyToken,UserController.getByEmail)
+
 
 export default router;

@@ -32,17 +32,30 @@ MONGODB_URI=mongodb://localhost:27017/online-courses</code></pre>
       <li>User authentication using JSON Web Tokens (JWT).</li>
       <li>Route protection using authentication middleware.</li>
       <li>Manage user enrollments to courses.</li>
+     <li> API Endpoints</li>
+<li>| HTTP Verbs | Endpoints                      | Action                          | </li>
+<li>|    ---     |        ---                     |           ---                   | </li>
+<li>|    GET     | /users/                        | Get all users |                   </li>
+<li>|    GET     | /users/:id                     | Get users by id |                 </li>
+<li>|   DELETE   | /users/delete/:id              | To delete users by id             </li>
+<li>|   PATCH    | /:userId/rent/:movieId:        | To rent movies,user collection been update in movies sub array |</li>
+<li>|   POST     | /auth/login/                     | To login user by email and id   |</li>
+<li>|   POST     | /auth/register/                  | to create users                 |</li>
+<li>|   PUT      | /auth/updateuser/                | to update users                 |</li>
+<li>|    GET     | /cursadas/                       | To get a list of Courses         | </li>
+<li>|    GET     | /cursadas/:id                    | To search Courses with their id  | </li>
+<li>|    POST    | /cursadas/registercurso          | To register Courses               | </li>
+<li>|    GET     | /cursadas/miscursos/:email       | To search Corses by their own user | </li>
+<li>|    DELETE  | /cursadas/delete/:id             | To delete Courses with their id  | </li>
+<li>|    GET     | /cursadas/search/:title          | To search Courses By name (SEARCH ENGINE) | </li>
+<li>|   PATCH    | /cursadas/:id/order/:userId"     | Buy Courses                      | </li>
+<li>|    GET     | /cursadas/compradas/:userId      | to search for purchased courses | </li>
+
+
+
+
     </ul>
-    <h2>Contributing</h2>
-    <p>If you would like to contribute to this project, please follow these steps:</p>
-    <ol>
-      <li>Fork this repository.</li>
-      <li>Create a branch for your new feature: <code>git checkout -b new-feature</code></li>
-      <li>Make your changes and commit them: <code>git commit -m "Add new feature"</code></li>
-      <li>Push your changes to your fork: <code>git push origin new-feature</code></li>
-      <li>Create a Pull Request to this repository.</li>
-    </ol>
     <h2>Author</h2>
-    <p>This project was developed by Your Name.</p>
+    <p>This project was developed by @fekyland  https://github.com/fekyland</p>
   </body>
 </html>

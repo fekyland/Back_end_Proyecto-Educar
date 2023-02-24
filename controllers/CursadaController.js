@@ -130,24 +130,7 @@ CursadaController.deleteById = async (req, res) => {
   }
 }
 
-CursadaController.updateById = async (req, res) => {
-  console.log(req.body)
-  try {
-    const id = req.params.id
-    await Cursada.findOneAndUpdate({ _id: id }, req.body)
 
-    return res.status(200).json({
-      success: true,
-      message: 'update curso successfully',
-    })
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Error actualizando curso',
-      error: error?.message || error,
-    })
-  }
-}
 //buscador de cursos 
 CursadaController.searchByTitle = async (req, res) => {
   try {
@@ -170,7 +153,7 @@ CursadaController.searchByTitle = async (req, res) => {
     })
   }
 }
-//compra peliculas y se almacena en el campo orders id
+//compra cursadasy se almacena en el campo orders id
 CursadaController.buyById = async (req, res) => {
   
   try {
@@ -181,7 +164,7 @@ CursadaController.buyById = async (req, res) => {
     const match = false
     if (match) {
       res.json({
-        message: 'User already have this movie',
+        message: 'User already have this cursada',
         inserted: false,
       })
     } else {
@@ -219,7 +202,7 @@ CursadaController.findBuyersById = async (req, res) => {
       res.status(500).json({ message: error.message })
   }
 }
-//redirigir si esta comprada por el usuario o no
+//redirigir si esta comprada por el usuario o no ,o  si es  el autor
 CursadaController.checkCursada = async (req, res) => {
    const Id = req.params.id
    const userId = req.params.userId

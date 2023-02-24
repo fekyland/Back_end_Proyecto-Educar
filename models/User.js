@@ -19,12 +19,11 @@ const UserSchema = new Schema(
          required: true,
          minlength: 6,
       },
-      role: {
-         type: String,
-         enum: ["user", "admin", "super_admin"],
-         default: "user",
-      },
-   
+      role_id: { 
+         type: Schema.ObjectId, 
+         ref: "Role" ,
+         required: true
+       }
    },
    {
       timestamps: true,

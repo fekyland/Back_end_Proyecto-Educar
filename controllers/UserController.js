@@ -87,25 +87,7 @@ UserController.BuyUserCursos = async (req, res) => {
        res.status(500).send ("internal error");
     };
  }
-UserController.updateById = async (req, res) => {
-   console.log(req.body)
-   try {    
-      const id = req.params.id
-      await User.findOneAndUpdate({_id:id},req.body);
-        
-     return res.status(200).json({
-       success: true,
-       message: 'Update User successfully',
-     })
- 
-   } catch (error) {
-     return res.status(500).json({
-       success: false,
-       message: 'Error updating User',
-       error: error?.message || error,
-     })
-   }
- }
+
  UserController.getByEmail= async (req, res) => {
    try {
       const {email} = req.params
