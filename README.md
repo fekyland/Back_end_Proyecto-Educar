@@ -10,11 +10,11 @@
     <p>This is the backend for an online courses platform that uses Node.js, JavaScript, Express, and MongoDB.</p>
     <h2>Installation</h2>
     <ol>
-      <li>Clone this repository: <code>git clone https://github.com/your-username/your-repository.git</code></li>
+      <li>Clone this repository: <code>git clone https://github.com/fekyland/Back_end_Proyecto-Educar.git</code></li>
       <li>Install dependencies: <code>npm install</code></li>
       <li>Create a <code>.env</code> file at the root of the project and configure the following environment variables:</li>
       <pre><code>PORT=3000
-MONGODB_URI=mongodb://localhost:27017/online-courses</code></pre>
+       MONGODB_URI=mongodb://localhost:27017/your-mongo-database</code></pre>
       <li>Start the application: <code>npm start</code></li>
     </ol>
     <h2>Technologies</h2>
