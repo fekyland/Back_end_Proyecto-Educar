@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <h1>Backend for Online Courses</h1>
+    <h1>EDUCAR-Backend for Online Courses</h1>
     <p>This is the backend for an online courses platform that uses Node.js, JavaScript, Express, and MongoDB.</p>
     <h2>Installation</h2>
     <ol>
