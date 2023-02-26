@@ -24,7 +24,10 @@ AuthController.register = async (req, res) => {
          name: name,
          email: email,
          password: encryptedPassword,
-         role_id:"63f74c4112987034f3daeb0c"
+         role_id:"63fb31d8a8b468001cbe98f3"
+
+
+         
         
       };
      

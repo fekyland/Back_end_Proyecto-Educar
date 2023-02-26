@@ -6,7 +6,7 @@ import  isSuperAdmin from "../middlewares/isSuperAdmin.js";
 import  verifyToken from "../middlewares/verifyToken.js";
 
 /* GET users listing. */
-router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
+router.get("/", verifyToken, isSuperAdmin,UserController.getAll);
 // get user by id
 router.get("/:id", verifyToken, isSuperAdmin, UserController.getById);
 // delete user by id
